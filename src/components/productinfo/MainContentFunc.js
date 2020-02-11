@@ -1,8 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import ProductDescription from './ProductDescription';
 import ProductContent from './ProductContent';
 export default function MainContentFunc(props) {
-  var a = 123
+  var [currentCart, setCart] = useState(0);
+  console.log(setCart)
+  function haddleAddToCart(){
+    setCart(currentCart + 1)
+  }
   return (
     <div className="container">
       <div className="list-blog">
@@ -11,9 +15,9 @@ export default function MainContentFunc(props) {
         qui.</p>
       </div>
       <div id="app">
-          <div className="cart">Giỏ hàng (0)</div>
+          <div className="cart">Giỏ hàng ({currentCart})</div>
           <div className="product">
-            <ProductContent {...props} />
+            <ProductContent {...props}  waitAddToCart={haddleAddToCart}/>
           </div >
           <ProductDescription {...props}/>
         </div>

@@ -2,12 +2,16 @@ import React, {useState} from 'react';
 import ProductImage from './ProductImage';
 
 export default function ProductContent(props) {
-  let { title, brand, variations } = props;
+  let { title, brand, variations,waitAddToCart } = props;
   let [selectedIndex,setIndex] = useState(0)
   let selectedVariant = variations[selectedIndex];
   function getClassActive(id) {
     if (id == selectedVariant.variationsID) return 'active';
     return '';
+  }
+  
+  function addToCart(){
+    waitAddToCart()
   }
 
   return (
@@ -42,7 +46,7 @@ export default function ProductContent(props) {
             <li className=""><img src="./images/black.jpg" alt="Màu Đen" /></li> */}
           </ul>
         </div>
-      </div> <button className="add-to-cart">Add to cart</button>
+      </div> <button onClick={addToCart} className="add-to-cart">Add to cart</button>
     </div>
     </>
   )
